@@ -1,5 +1,5 @@
 {% set name = "anaconda-packaging-utils" %}
-{% set version = "v0.1.1" %}
+{% set version = "v0.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/anaconda-distribution/anaconda-packaging-utils/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 6a440a85ca29452c2900f272c971b505c56569a955be188d660dc31d9fdf044c
+  sha256: 963ca4627b8887bfe831c0f1eecbb057c24532a51d3c565de5282cd825e5da6f
 
 build:
   number: 0
