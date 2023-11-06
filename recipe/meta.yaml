@@ -1,0 +1,58 @@
+{% set name = "anaconda-packaging-utils" %}
+{% set version = "v0.1.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/anaconda-distribution/anaconda-packaging-utils/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 963ca4627b8887bfe831c0f1eecbb057c24532a51d3c565de5282cd825e5da6f
+
+build:
+  number: 0
+  noarch: python
+  script: pip install . --no-deps --no-build-isolation -vv
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python >=3.11
+    - conda
+    - jsonschema
+    - types-jsonschema
+    - percy >=0.1.1
+    - PyGithub
+    - pyyaml
+    - types-pyyaml
+    - requests
+    - types-requests
+
+test:
+  imports:
+    - anaconda_packaging_utils
+  source_files:
+    - anaconda-packaging-utils-config-template.yaml  # Used for self-test
+    - anaconda_packaging_utils/tests/
+  requires:
+    - pip
+    - pytest
+    - pytest-xdist
+  commands:
+    - pip check
+    - python -m pytest -n auto --capture=no anaconda_packaging_utils/tests/
+
+about:
+  home: https://github.com/anaconda-distribution/anaconda-packaging-utils
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Library used for our various packaging tools and needs.
+  description: |
+    Contains API, tooling, and utility modules used for packaging automation.
+  doc_url: https://github.com/anaconda-distribution/anaconda-packaging-utils
+  dev_url: https://github.com/anaconda-distribution/anaconda-packaging-utils
