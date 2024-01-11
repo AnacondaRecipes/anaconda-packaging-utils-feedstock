@@ -1,5 +1,5 @@
 {% set name = "anaconda-packaging-utils" %}
-{% set version = "v0.1.4" %}
+{% set version = "v0.1.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/anaconda-distribution/anaconda-packaging-utils/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 6247d768703f0f15346bfa7499318818cb0c64f852057398a7d7d24da2cf5afd
+  sha256: 43f79d86168612b0422c908058be66b53638e7ddd75f60830fa941a3ed71d7ba
 
 build:
   number: 0
@@ -23,6 +23,7 @@ requirements:
   run:
     - python >=3.11
     - conda
+    - jira >=3.6.0
     - jsonschema
     - types-jsonschema
     - percy >=0.1.3
